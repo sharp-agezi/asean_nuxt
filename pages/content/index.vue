@@ -4,18 +4,20 @@
     <p>
       {{focusNews}}
     </p>
+    <div>
+      {{mainData}}
+    </div>
 
   </div>
 </template>
 <script>
-  import {  mainAd } from '~/api/homePage';
+  import {  mainAd,listColumnInfo } from '~/api/homePage';
   import axios from 'axios';
   export default{
-     asyncData(){
-     return axios.get('http://a2.aseantop.com/app//web/v1/mainAd').then(res=>{
-         console.log(res)
-       return {focusNews:res.data}
-     })
+     async asyncData(){
+       let main = await mainAd();
+       let bbb= await listColumnInfo({reqdata:{columnIds:'2,3,43,23,41,14,17,19,20,21,9,11,12,13'}});
+       return {focusNews:main,mainData:bbb}
     },
   }
 </script>

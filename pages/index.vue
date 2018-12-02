@@ -366,39 +366,62 @@
         boxHeight:500+'px'
       };
     },
-    mounted() {
-      mainAd().then(res => {
-        this.adObj = res.object;
-      });
-      listColumnInfo({reqdata:{columnIds:'2,3,43,23,41,14,17,19,20,21,9,11,12,13'}}).then(res=>{
-        this.mainData=res.object;
-        this.lifeColumnData=this.mainData[2]
-      });
-      //焦点新闻
-      listFocusInfo({"page": "1",
-        "rows": "16",
-        "reqdata": {
-          "type": "focus"
-        }
-      }).then(res=>{this.focusNews=res.list;});
+    async asyncData(){
+      let adObj= await mainAd();
+      let mainData = await listColumnInfo({reqdata:{columnIds:'2,3,43,23,41,14,17,19,20,21,9,11,12,13'}});
+      let focusNews= await listFocusInfo({"page": "1","rows": "16", "reqdata": {"type": "focus"}});
+      let swiperList= await listFocusInfo({"page": "1","rows": "16", "reqdata": {"type": "recommend"}});
+      let swiperListArray = [];
 
-      //轮播图数据
-      listFocusInfo({"page": "1",
-        "rows": "8",
-        "reqdata": {
-          "type": "recommend"
-        }
-      }).then(res=>{
-        if (this.swiperList.length < 1){
-          res.list.map(item => {
-            this.swiperList.push({
-              path: this.picPath + item.infoimg,
-              infoId: item.infoId,
-              title:item.title
-            });
+      swiperList.list.map(item => {
+        swiperListArray.push({
+            path: 'http://pic-asean2.oss-cn-hongkong.aliyuncs.com/' + item.infoimg,
+            infoId: item.infoId,
+            title:item.title
           });
-        }
-      });
+        });
+
+      return {
+        adObj:adObj.object,
+        mainData:mainData.object,
+        lifeColumnData:mainData.object[2],
+        focusNews:focusNews.list,
+        swiperList:swiperListArray
+      }
+    },
+    mounted() {
+//      mainAd().then(res => {
+//        this.adObj = res.object;
+//      });
+//      listColumnInfo({reqdata:{columnIds:'2,3,43,23,41,14,17,19,20,21,9,11,12,13'}}).then(res=>{
+//        this.mainData=res.object;
+//        this.lifeColumnData=this.mainData[2]
+//      });
+      //焦点新闻
+//      listFocusInfo({"page": "1",
+//        "rows": "16",
+//        "reqdata": {
+//          "type": "focus"
+//        }
+//      }).then(res=>{this.focusNews=res.list;});
+
+//      //轮播图数据
+//      listFocusInfo({"page": "1",
+//        "rows": "8",
+//        "reqdata": {
+//          "type": "recommend"
+//        }
+//      }).then(res=>{
+//        if (this.swiperList.length < 1){
+//          res.list.map(item => {
+//            this.swiperList.push({
+//              path: this.picPath + item.infoimg,
+//              infoId: item.infoId,
+//              title:item.title
+//            });
+//          });
+//        }
+//      });
 
       // listWordbar().then(res=>{
       //     console.log(res)
