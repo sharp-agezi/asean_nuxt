@@ -1,0 +1,116 @@
+@import './header.scss';
+@import './footer.scss';
+@import './homePage.scss';
+body{
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: Microsoft Yahei,Arial,Arial,tahoma,Helvetica,sans-serif;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    .fl{ float:left}
+    .fr{float:right}
+    .clear{clear:both}
+    .auto{
+        width:1200px;
+        margin:0 auto
+    }    
+    .clearfix:after { 
+        visibility: hidden; 
+        display: block; 
+        font-size: 0; 
+        content: " "; 
+        clear: both; 
+        height: 0; 
+    } 
+    .wgw-color{color:#1c6ab3;}  
+    .wgw-bg{background:#1c6ab3;}
+    header,section,article,footer,nav{display: block} 
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  // -moz-user-select:none;
+  // -webkit-user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight:normal;
+}
+div:focus{
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  font-family: 'MicrosoftYaHeiLight', 'Microsoft YaHei Light', 'Microsoft YaHei';
+  // color: -webkit-link;
+  color: #257FEB;
+  text-decoration: none;
+}
+a{
+  color: #393939;
+}
+
+ol,
+ul {
+    list-style: none;
+    li{
+        text-align: left;
+        overflow: hidden;
+        // text-overflow:ellipsis;
+        // white-space: nowrap;
+    }
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+    width: 100%;
+}
+
+i {
+  font-style:normal
+}
+
+.line-one{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.line-n{
+  overflow: hidden;
+  text-overflow: ellipsis;  
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+    
+}
+.line-two{
+  overflow: hidden;
+  text-overflow: ellipsis;  
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+    
+}
+.icon {
+   width: 2em; 
+   height: 2em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+

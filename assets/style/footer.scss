@@ -1,0 +1,23 @@
+.footer{
+    
+    bottom: 0px;
+    z-index: 99;  
+    .btm{
+        // height:123px;  
+        height:60px;  
+        // position: fixed;
+        width: 100%;
+        .f-about{
+            text-align: center;
+            color:#fff;
+            line-height:60px;
+            p:first-child{
+                // margin-top:30px;
+                img{
+                    display: inline-block;
+                    margin-left:10px;
+                }
+            }
+        }
+    }
+}
