@@ -367,11 +367,13 @@
       };
     },
     async asyncData(){
-      let adObj= await mainAd();
-      let mainData = await listColumnInfo({reqdata:{columnIds:'2,3,43,23,41,14,17,19,20,21,9,11,12,13'}});
-      let focusNews= await listFocusInfo({"page": "1","rows": "16", "reqdata": {"type": "focus"}});
-      let swiperList= await listFocusInfo({"page": "1","rows": "16", "reqdata": {"type": "recommend"}});
       let swiperListArray = [];
+      let [adObj, mainData,focusNews,swiperList] = await Promise.all([
+        mainAd(),
+        listColumnInfo({reqdata:{columnIds:'2,3,43,23,41,14,17,19,20,21,9,11,12,13'}}),
+        listFocusInfo({"page": "1","rows": "16", "reqdata": {"type": "focus"}}),
+        listFocusInfo({"page": "1","rows": "16", "reqdata": {"type": "recommend"}})
+      ])
 
       swiperList.list.map(item => {
         swiperListArray.push({
@@ -389,6 +391,7 @@
         swiperList:swiperListArray
       }
     },
+
     mounted() {
 //      mainAd().then(res => {
 //        this.adObj = res.object;
