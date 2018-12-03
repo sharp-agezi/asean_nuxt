@@ -14,8 +14,9 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', type: 'text/css', href: '/swiper.min.css' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+
     ]
   },
 

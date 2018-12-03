@@ -3,8 +3,8 @@
     <div class="m-con auto" v-if="mainData">
       <div class="m1-box">
         <div class="m1-box-fl fl">
-          <div class="m1-news-img">
-            <swiper :options="swiperOptionTop" class="gallery-top" ref="swiperTop">
+          <div class="m1-news-img" >
+            <swiper :options="swiperOptionTop" class="gallery-top" ref="swiperTop" v-if="swiperStatic">
               <swiper-slide v-for="(item,index) in swiperList" :key="index">
                 <nuxt-link :to="'/content/'+item.infoId"  tag="a" target="_blank">
                   <img :src="item.path"><p class="line-one">{{item.title}}</p>
@@ -13,6 +13,7 @@
               <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
               <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
             </swiper>
+            <img src="@/static/loading.png" style="height:498px;width:692px;margin-left:38px;" v-if="!swiperStatic"/>
           </div>
         </div>
         <div class="m1-box-fr fr">
@@ -363,7 +364,9 @@
           slideToClickedSlide: true,
         },
 //        boxHeight:document.documentElement.clientHeight-295+"px"//页面的默认高度
-        boxHeight:500+'px'
+        boxHeight:500+'px',
+        swiperStatic:false,
+
       };
     },
     async asyncData(){
@@ -391,44 +394,8 @@
         swiperList:swiperListArray
       }
     },
-
     mounted() {
-//      mainAd().then(res => {
-//        this.adObj = res.object;
-//      });
-//      listColumnInfo({reqdata:{columnIds:'2,3,43,23,41,14,17,19,20,21,9,11,12,13'}}).then(res=>{
-//        this.mainData=res.object;
-//        this.lifeColumnData=this.mainData[2]
-//      });
-      //焦点新闻
-//      listFocusInfo({"page": "1",
-//        "rows": "16",
-//        "reqdata": {
-//          "type": "focus"
-//        }
-//      }).then(res=>{this.focusNews=res.list;});
-
-//      //轮播图数据
-//      listFocusInfo({"page": "1",
-//        "rows": "8",
-//        "reqdata": {
-//          "type": "recommend"
-//        }
-//      }).then(res=>{
-//        if (this.swiperList.length < 1){
-//          res.list.map(item => {
-//            this.swiperList.push({
-//              path: this.picPath + item.infoimg,
-//              infoId: item.infoId,
-//              title:item.title
-//            });
-//          });
-//        }
-//      });
-
-      // listWordbar().then(res=>{
-      //     console.log(res)
-      // })
+      this.swiperStatic=true;
     },
     updated(){
       this.$nextTick(() => {
