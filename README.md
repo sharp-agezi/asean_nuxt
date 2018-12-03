@@ -2,6 +2,9 @@
 
 > My magnificent Nuxt.js project
 
+
+
+
 ## Build Setup
 
 ``` bash

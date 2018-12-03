@@ -14,7 +14,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', type: 'text/css', href: '/swiper.min.css' }
     ]
   },
 
@@ -27,18 +28,16 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    // {
-    //   src: '*.scss',
-    //   lang: 'sass'
-    // }
+    "iview/dist/styles/iview.css",
+    "@/assets/style/index.scss",
+    "@/assets/iconfont/iconfont.css",
   ],
-
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    // { src: '~plugins/axios.js', ssr: false },
-    // { src: '~plugins/iview.js', ssr: false },
+    { src: '~plugins/iview.js', ssr: true },
+    { src: '~plugins/lazy.js', ssr: true },
     { src: '~plugins/plugins.js', ssr: false },
   ],
 
